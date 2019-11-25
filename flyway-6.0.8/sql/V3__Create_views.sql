@@ -1,0 +1,14 @@
+CREATE OR REPLACE VIEW Cliente_Pedidos as
+SELECT P.ID_PESSOA, P.CPF, P.TELEFONE, P.NOME, PROD.nome as nome_produto, PED.id_pedido, PEDPROD.quantidade_produto, PROD.preco, SUM (PROD.preco * PEDPROD.quantidade_produto) as PRECOTOTAL
+FROM PESSOA P, CLIENTE C
+    LEFT JOIN PEDIDO PED ON PED.id_cliente = C.id_cliente
+    LEFT JOIN PEDIDO_PRODUTO PEDPROD ON PEDPROD.id_pedido = PED.id_pedido
+    LEFT JOIN PRODUTO PROD ON PROD.id_produto = PEDPROD.id_produto
+WHERE P.ID_PESSOA = C.ID_CLIENTE
+GROUP BY PED.id_pedido, P.id_pessoa, PROD.nome, PEDPROD.quantidade_produto, PROD.preco;
+
+CREATE OR REPLACE VIEW Clientes as
+SELECT P.ID_PESSOA, P.CPF, P.TELEFONE, P.NOME, C.ID_CLIENTE
+FROM PESSOA P, CLIENTE C
+WHERE P.ID_PESSOA = C.ID_CLIENTE
+
