@@ -1,0 +1,1 @@
+ALTER DATABASE postgres SET TABLESPACE ts_Confeitaria;
