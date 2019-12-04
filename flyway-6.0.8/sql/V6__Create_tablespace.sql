@@ -1,3 +1,2 @@
-CREATE TABLESPACE ts_Confeitaria
-LOCATION  '/Users/marcoparente/ConfeitariaTablespaces/Banco';
+CREATE TABLESPACE ts_Confeitaria LOCATION '/Users/marcoparente/ConfeitariaTablespaces/Banco';
 
